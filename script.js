@@ -8,6 +8,7 @@ dragObjects.forEach(dragObject => {
 });
 
 let currentDrag;
+let overlapMessage;
 
 // This function will be called when the user starts dragging an element
 function dragStart(event) {
@@ -29,9 +30,27 @@ function dragStart(event) {
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 
-    // Move the element as the mouse moves
+    //Move the element as the mouse moves
     function onMouseMove(event) {
         moveAt(event.pageX, event.pageY);
+
+        // Check for overlapping elements
+        overlapMessage = '';
+        dragObjects.forEach(dragObject => {
+            if (dragObject !== currentDrag) {
+                const rect1 = currentDrag.getBoundingClientRect();
+                const rect2 = dragObject.getBoundingClientRect();
+
+                if (rect1.left < rect2.right && rect1.right > rect2.left && rect1.top < rect2.bottom && rect1.bottom > rect2.top
+                ) {
+                    overlapMessage = "It's Overlapping!";
+                }
+            }
+        });
+
+        // Display the overlap message
+        const messageDiv = document.getElementById('massage');
+        messageDiv.innerHTML = overlapMessage;
     }
 
     // This function will be called when the user stops dragging the element
@@ -40,6 +59,10 @@ function dragStart(event) {
         document.removeEventListener('mouseup', onMouseUp);
         currentDrag.style.pointerEvents = 'auto';
         currentDrag = null;
+
+        // Clear the overlap message
+        const messageDiv = document.getElementById('massage');
+        messageDiv.innerHTML = '';
     }
 }
 

@@ -7,20 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag & Drop</title>
     <style>
+        .container {
+            display: flex;
+            justify-content: flex-start;
+        }
+
         .drag-object {
             width: 200px;
             height: 200px;
             margin: 10px;
             cursor: move;
         }
+
+        #massage {
+            margin-top: -12%;
+            margin-right: 20px;
+            float: right;
+            color: red;
+            font-size: 40px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="drag-object" style="background:blue">
-        </div>
+        <div class="drag-object" style="background:blue"></div>
+        <div class="drag-object" style="background:rgb(255, 251, 0)"></div>
     </div>
+    <div id="massage"></div>
     <script src="script.js"></script>
 </body>
 
