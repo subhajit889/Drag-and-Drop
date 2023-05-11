@@ -8,11 +8,13 @@ Objects snap to a grid when dropped.
 Displays a message if there is an overlap between objects.
 
 #Technologies:
-HTML
-CSS
+HTML, 
+CSS &
 JavaScript
 
 #Usage:
 Click and drag an object to move it around the screen.
 Drop the object onto the grid to snap it into place.
 If there is an overlap between objects, a message will be displayed.
+
+#hosting link:- https://subhajit889.github.io/Drag-and-Drop/
